@@ -1,6 +1,4 @@
-using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 
 namespace DockerWebAPI.Controllers;
 

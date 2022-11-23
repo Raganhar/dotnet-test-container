@@ -9,13 +9,13 @@ namespace DockerWebAPITests;
 
 public class SmokeTest
 {
-    private TestcontainersContainer _db = new TestcontainersBuilder<MySqlTestcontainer>()
+    private MySqlTestcontainer _db = new TestcontainersBuilder<MySqlTestcontainer>()
         .WithDatabase(new MySqlTestcontainerConfiguration()).Build();
 
     [Test]
     public void Smoke([Values] CpuSize cpus)
     {
-
+        
         Console.WriteLine(cpus.ToCpuUnits());
     }
 }
