@@ -1,10 +1,12 @@
 using System.Net;
 using Amazon;
 using Amazon.S3;
+using DockerWebAPI.DbStuff;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.Aws.S3;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,11 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext().Enrich.WithProperty("appName", "sampleapp")
     .CreateLogger();
 
+// builder.Services.AddDbContextFactory<RandomDbContext>(
+//     options =>
+//         options.UseMySQL(@"Server=localhost;Uid=root;Pwd=root;"));
+        // options.UseMySQL(@"Server=localhost;Database=;Uid=root;Pwd=root;"));
+builder.Services.AddDbContext<RandomDbContext>(options => options.UseMySQL(@"Server=localhost;Database=;Uid=root;Pwd=root;"));
 builder.Logging.AddSerilog();
 
 builder.Services.AddControllers();
