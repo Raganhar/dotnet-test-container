@@ -21,11 +21,11 @@ Log.Logger = new LoggerConfiguration()
 //     options =>
 //         options.UseMySQL(@"Server=localhost;Uid=root;Pwd=root;"));
         // options.UseMySQL(@"Server=localhost;Database=;Uid=root;Pwd=root;"));
-builder.Services.AddDbContext<RandomDbContext>(options =>
-{
-    var connectionString = @"Server=localhost;Database=bob;Uid=root;Pwd=root;";
-    options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString));
-});
+// builder.Services.AddDbContext<RandomDbContext>(options =>
+// {
+//     var connectionString = @"Server=localhost;Database=bob;Uid=root;Pwd=root;";
+//     options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString));
+// });
 builder.Logging.AddSerilog();
 
 builder.Services.AddControllers();
